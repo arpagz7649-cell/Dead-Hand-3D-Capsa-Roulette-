@@ -1,25 +1,45 @@
-<div id="ui-layer">
-    <h1>DEAD HAND</h1>
-    <p>3D Capsa Roulette</p>
-    
-    <div id="main-menu" class="menu-box">
-        <button onclick="showHostMenu()">BUAT RUANGAN (HOST)</button>
-        <button onclick="showJoinMenu()">GABUNG RUANGAN (JOIN)</button>
-        <button onclick="playSolo()">MAIN SENDIRI (OFFLINE)</button>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Dead Hand: 3D Capsa</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="ui-layer">
+        <div class="overlay"></div>
+        <div class="content">
+            <h1 class="glitch">DEAD HAND</h1>
+            <p class="subtitle">3D CAPSA ROULETTE</p>
+            
+            <div id="main-menu" class="menu-group">
+                <button class="btn-main" onclick="showHostMenu()">BUAT RUANGAN</button>
+                <button class="btn-main" onclick="showJoinMenu()">GABUNG RUANGAN</button>
+                <button class="btn-sub" onclick="playSolo()">MAIN OFFLINE</button>
+            </div>
+
+            <div id="host-menu" class="menu-group" style="display:none;">
+                <p>KODE ROOM ANDA:</p>
+                <div id="generatedCode" class="code-display">----</div>
+                <button class="btn-main" onclick="startHost()">MULAI GAME</button>
+                <button class="btn-back" onclick="backToMenu()">KEMBALI</button>
+            </div>
+
+            <div id="join-menu" class="menu-group" style="display:none;">
+                <input type="number" id="roomInput" placeholder="KODE 4-ANGKA">
+                <button class="btn-main" onclick="joinGame()">MASUK MEJA</button>
+                <button class="btn-back" onclick="backToMenu()">KEMBALI</button>
+            </div>
+            
+            <p id="status">Siapkan mentalmu...</p>
+        </div>
     </div>
 
-    <div id="host-menu" class="menu-box" style="display:none;">
-        <p>KODE RUANGAN ANDA:</p>
-        <h2 id="generatedCode">----</h2>
-        <button onclick="startHost()">MULAI PERMAINAN</button>
-        <button onclick="backToMenu()" style="background: #444;">BATAL</button>
-    </div>
+    <div id="game-container"></div>
 
-    <div id="join-menu" class="menu-box" style="display:none;">
-        <input type="text" id="roomInput" placeholder="MASUKKAN KODE...">
-        <button onclick="joinGame()">MASUK MEJA</button>
-        <button onclick="backToMenu()" style="background: #444;">BATAL</button>
-    </div>
-    
-    <div id="status">Siapkan mentalmu...</div>
-</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
