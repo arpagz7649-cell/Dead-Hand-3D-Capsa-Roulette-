@@ -1,29 +1,25 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Dead Hand: 3D Capsa</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-    <div id="ui-layer">
-        <h1>DEAD HAND</h1>
-        <p>3D Capsa Roulette</p>
-        
-        <div class="menu-box">
-            <input type="text" id="roomInput" placeholder="KODE ROOM...">
-            <button onclick="joinGame()">MASUK MEJA</button>
-        </div>
-        
-        <div id="status">Menunggu Pemain...</div>
+<div id="ui-layer">
+    <h1>DEAD HAND</h1>
+    <p>3D Capsa Roulette</p>
+    
+    <div id="main-menu" class="menu-box">
+        <button onclick="showHostMenu()">BUAT RUANGAN (HOST)</button>
+        <button onclick="showJoinMenu()">GABUNG RUANGAN (JOIN)</button>
+        <button onclick="playSolo()">MAIN SENDIRI (OFFLINE)</button>
     </div>
 
-    <div id="game-container"></div>
+    <div id="host-menu" class="menu-box" style="display:none;">
+        <p>KODE RUANGAN ANDA:</p>
+        <h2 id="generatedCode">----</h2>
+        <button onclick="startHost()">MULAI PERMAINAN</button>
+        <button onclick="backToMenu()" style="background: #444;">BATAL</button>
+    </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <div id="join-menu" class="menu-box" style="display:none;">
+        <input type="text" id="roomInput" placeholder="MASUKKAN KODE...">
+        <button onclick="joinGame()">MASUK MEJA</button>
+        <button onclick="backToMenu()" style="background: #444;">BATAL</button>
+    </div>
     
-    <script src="game.js"></script>
-</body>
-</html>
+    <div id="status">Siapkan mentalmu...</div>
+</div>
